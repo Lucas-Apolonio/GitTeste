@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git - Estudo</title>
+</head>
+<body>
+    <h1>Git</h1>
+    
+    <h1>Controle de versão</h1>
+    <p>
+        <abbr title="Version Control System">VCS</abbr> Sistema de controle de versão, como isso podemos, registrar alterações
+         em arquivos com a finalidade de não perder-los ou reverter para um estado anterior,também é possível ver oque foi modificado
+         e muito mais.
+    </p>
+
+    <h1>Tipos de Controle de Versão</h1>
+    <ul>
+        <li>
+            <h2>Sistemas Locais</h2>
+            Copiar os arquivos para outro diretório. ( Sem um sistema de versionamento. ) Criando arquivos manualmente, um sistema manual.
+        </li>
+        <li>
+            <h2>Sistemas Centralizados</h2>
+            <p>
+                Exemplos: CVS, Subversion e Perforce. <br>
+            </p>
+            <p>
+                Sistemas Centrilazados será centralizado em um único servidor, podendo vários clientes usarem arquivops desse mesmo servidor.
+                Porém há vantagens e desvantages:
+                <ul>
+                    <li>
+                        <h3>Vantagens</h3>
+                        <p>
+                            -Controle sobre atividades dos colaboradores no projeto.<br>
+                            -Os administradores têm controle refinado sobre quem pode fazer o que;<br>
+                            -Mais fácil de administrar um CVCS do que lidar com bancos de dados locais em cada cliente.
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Desvantagens</h3>
+                        <p>
+                           -Se esse servidor der problemas, ninguém pode colaborar ou salvar alterações de versão.<br>
+                           -Se o disco rigído do banco de dados for corrompido, perderá tudo.
+                           -Sistemas VCS locais sofrem com esse mesmo problema. 
+                        </p>
+                    </li>
+                </ul>
+            </p>
+        </li>
+        <li>
+            <h2>Sistema Distribuídos</h2>
+            <p>
+                Exemplo: Git, Mercurial, Bazaar ou Darcs. <br>
+            </p>
+            <p>
+                -Ele duplica ( clona ), localmente o repositório completo.<br>
+                -Se qualquer servidor morrer, os repositórios estarão com os colaboradores, cada clone é de fato um backup completo de todos os dados.<br>
+                -Clientes usam o estado mais recente dos arquivos.
+
+            </p>
+        </li>
+    </ul>
+
+    <h1>O que é o Git.</h1>
+    <p>O git é um <abbr title="Version Control System">VCS</abbr>, open soucer.</p>
+
+    <p>Com ele é possível registrar "Pontos" no código/arquivo para voltarmos se for necessário, seja por um erro ou necessidade adiversas, contém histórico de alterações
+        no código e entre outros como controlar fluxo de novas funcionalidades.
+    </p>
+    <p>
+        É possível criarmos branch, ramificações dos "Pontos", para não afetar o ponto funcional e assim podendo outros Devs trabalhar juntos.
+    </p>
+
+    <h1>Configurando Git - Primeira vez</h1>
+    <p>
+        Comandos git assim que instalar. <br>
+        Adicionar nosso nome: <code>git config --global user.name "Seu Nome Completo aqui"</code>. O nome entre aspas.<br> 
+        Adicionar nosso email: <code>git config --global user.email emailteste@outlook.com</code>. O email não precisa das aspas.
+    </p>
+
+    <!-- Entender melhor esta partea -->
+    <h2>Entendo os comandos</h2>
+    <p>
+        O comando <code>git config</code> nos permite ver e atribuir variáveis de configuração como nome e email.<br>
+        Estas variáveis podem ser armazenadas em três lugares diferentes:
+        <ol>
+            <li>
+                <p>
+                    <code>/etc/gitconfig</code>: Válido para toso os usuários no sistema e todos os seus repositórios. Se você passar a opção --system para git config, ele vê e escreve neste arquivo. 
+                </p>
+            </li>
+            <li>
+                <p>
+                    <code>~/.gitconfig</code> ou <code>~/.config/git/config</code> Somente para o seu usuário. Você pode fazer o Git ler e escrever neste arquivo passando a opção <code> --global</code>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <code>config</code> no diretório Git (ou seja, <code>.git/config</code> ) de qualquer repositório que você esteja usando: específico para este repositório.
+                </p>
+            </li>
+        </ol>
+        <p>
+            Cada nível sobrescreve os valores do nível anterior, ou seja, valores em <code> .git/config</code> prevalece sobre <code> /etc/gitconfig.</code>
+        </p>
+
+        <p>
+            <strong>No Windows, o arquivo <code>.gitconfig</code> estará no diretório $HOME que é <code>C:\Users\$USER</code>
+            </strong>
+        </p>
+    </p>
+
+    <h1>GIT HELP.</h1>
+    <p>
+        Comando <code>git help</code>, podemos ver muita coisa sobre o git, para abrender e entender como funciona o git e seus comandos.
+    </p>
+
+    <h1>Git log</h1>
+    <p>
+        Todo log tem um commit seguido pelo nome e onde estamos qual a branch ( ramifiação ).
+
+        <p>Comandos legais de ter:</p>
+        <p>
+            <code>git log</code> - Trás todo o log.<br>
+            <code>git log --oneline</code> - Trás informações importantes do logo apenas.<br>
+            <code>git log -n x</code> - Trás o log do valor apontado no "x".<br>
+            <code>git log --since="2020-10-01</code> - Trás o log após o valor informado.<br>
+            <code>git log --until="2020-10-01</code> - Trás o log anterior ao valor informado<br> 
+            <code>git log --author=Nome</code> - Trás o log do author informado.<br>
+            <code>git log --grep"init"</code> - Trás tudo que ele encontrará com o nome informado, no commit
+        </p>
+    </p>
+
+    <h1>Commit</h1>
+    <p>
+        Para adicionarmos um arquivo ao git, temos que usar o comando:
+        <code>git add .</code> após isso <code>git commit -m "initial commit"</code> e pronto foi feito um commit.
+    </p>
+
+    <p>
+        Também sendo possível adicionarmos arquivos de uma única vez, determinando o tipo de sua extensão, comando: <code>git add *.html</code>. <br>
+        Ou seja utilizando o "*" e após ele o tipo de arquivo, ele irá puxar todos com o mesmo tipo que foi determinado e irá para stage tree.
+    </p>
+
+    <h1>Hash Values (SHA-1)</h1>
+    <p>
+        Serve para garantir a integridade do commit, ele é gerado para garantir que não sejam repetidos o mesmo contém alguns meta dados,
+        são eles:
+        <ul>
+            <li>
+                parent
+            </li>
+            <li>
+                author
+            </li>
+            <li>
+                message:
+            </li>
+        </ul>
+        Assim nunca terá as mesmas informações.
+    </p>
+
+    <h1>Head</h1>
+    <p>
+        Head podemos dizer que ele é um ponteiro, apontando aonde estamos como ( Master ). <br>
+        Podemos pensar que o Head aponta para o ponto que estamos, por exemplo realizando um commit logo o Head apontará a este commit.
+    </p>
+
+    <h1>Git diff</h1>
+    <p>
+        É um comando que mostra as alterações nos arquivos.<br>
+        Ele só mostrará os arquivos restreados ou seja, os arquivos que foram adicionados ao repositório.
+    </p>
+
+    <h1>Git remove</h1>
+    <p>Possível excluirmos um arquivo do git, utilizando o comando: <code>git rm "file"</code> o mesmo irá adicionar ao stage area e pronto para comitarmos a exclusão do arquivo.</p>
+
+    <h1>Renomear arquivos / Mover</h1>
+    <p>
+        Utilizando o comando <code>git mv "nomedoarquivo" "novonomedoarquivo"</code> fazemos a alteração do nome, desta forma é necessário apenas commitar a mudança.
+    </p>
+    <p>
+        O mesmo comando serve para mover o algum arquivo, mudando apenas o paramêtro, sendo: <code>git mv "nomedoarquivo" "novaPasta/nomedoarquivo"</code>, adicionamos o nome do arquivo e o novo diretório do mesmo.
+    </p>
+
+    <h1>Desfazer Modificações</h1>
+    <p>
+        Utilizando o comando <code>git restore "nomedoarquivo"</code>, funciona antes do stage area.
+    </p>
+
+    <h1>Comandossss em geral</h1>
+    <p>
+        Restaurar aquivo do stage area, podemos usar o comando: <code>git restore --staged "nomedoarquivo"</code>, também é possível restaurarmos vários arquivos de uma única vez, usando o "." no final, ou seja. <br>
+        <code>git restore --staged .</code>
+    </p>
+
+    <h1>Restaurar o último commit</h1>
+    <p>
+        Usando o comando: <code>git commit --amend -m "nomedamensagem"</code> com esta comando é possível mudarmos o último commit feito, ou seja mudou a mensagem do último commit e seu HASH também passar 
+        a ser um novo. 
+    </p>
+
+    <h1>Restaurar aquivos</h1>
+    <p>
+        Para recuperarmos um arquivo do git precisamos usar o código: <code>git checkout -- "nomedoCommit" "nomedoArquivo"</code>, sendo o nome do Commit o código que é informado e o nome do arquivo em si. <br>
+        Após isto podemos só retirar o arquivo do stage area para não ser comitado se for o objetivo, usando o comando: <code>git restore --staged "nomedoArquivo"</code>.
+    </p>
+
+    <h1>Excluir arquivos não rastreados</h1>
+    <p>É possível excluirmos arquivos não rastreados com o código: <code>git-clean -n</code>, este irá mostar oque será removido e para exlcuirmos de fato o código: <code>git-clean -f</code>. Tomar cuidado com o comando, pois o mesmo será deletado e impossível de ser recuperado.</p>
+
+    <h1>Revertendo um Commit</h1>
+    <p>
+        É possível trazermos arquivos de um commit utilizando o código <code>git revert HEAD~5</code>, one o "HEAD~5" seria o 5 commit anterior ao último. <br>
+        Também é possível trazermos os arquivos de volta utilizando o Hash do commit, exemplo: <code>git revert "Hash do commit"</code>, assim já irá trazer os arquivos. <br>
+        O próprio git fará um novo commit. 
+    </p>
+
+    <h1>Apredendo usar o git em um projeto real.</h1>
+    <h2>Comandos que podem nos ajudar.</h2>
+    <p>
+        Após modificarmos um arquivo dentro de um repositório já existente, já rastreável, é possível utilizarmos o comando <code>git commit -am "texto"</code>
+        ou seja, ele irá jogar o arquivo para stage area com o "-a" e com o "m" fará o commit, porém é possível juntarmos por isto ( -am "texto" ) 
+    </p>
+
+    <h2>Ver modificação de um commit</h2>
+    <p>
+        É possível vermos a modificação de um commit utilizando o código: <code>git show "hash"</code>. <br>
+        Também é possível vermos as modificações de um diretório com o código: <code>git show "hash" -- "diretório ( exemplo: src/views/*)"</code>.
+    </p>
+
+    <h2>Gitignore</h2>
+    <p>Esse arquivo irá ajudar a ignora alguns arquivos que não faz sentido para nós. </p>
+</body>
+</html>
