@@ -1,3 +1,5 @@
-//Primeiro upload, push/deploy
+//Primeiro teste: upload, push/deploy
 
-//Segundo upload/deploy. Push em homologacao
+//Segundo teste: upload/deploy. Push em homologacao
+
+//Terceiro teste: pull homologacao
